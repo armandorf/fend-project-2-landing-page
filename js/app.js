@@ -127,10 +127,25 @@ createNSections();
 buildNavMenu();
 
 
+/*
+ * Scroll to Top Button Functionality
  */
 
-// Build menu
+// make button appear or disappear by using the window's scroll event
+window.onscroll = () => {
+  if (window.pageYOffset > SCROLL_TO_TOP_PAGE_Y_OFFSET) {
+    document.getElementById('page__scroll-to-top').style.display = 'block';
+  } else {
+    document.getElementById('page__scroll-to-top').style.display = 'none';
+  }
+};
 
-// Scroll to section on link click
-
-// Set sections as active
+// add event listener to button to scroll to top smoothly after a click
+document.getElementById('page__scroll-to-top').addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+  document.getElementById('page__scroll-to-top').style.display = 'none';
+});
