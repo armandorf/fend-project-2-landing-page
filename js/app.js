@@ -17,12 +17,12 @@
   const NUMBER_SEARCH_REGEX = /\d+/;
   const DEFAULT_NUMBER_OF_SECTIONS_TO_CREATE = 4;
   const SCROLL_TO_TOP_PAGE_Y_OFFSET = 50;
-  
-  
+
+
   /*
    * Helper Functions
    */
-  
+
   /**
    * Extracts the number that indicates section order from its id value
    * when such number is at the end of the string.
@@ -33,7 +33,7 @@
     const numAtEndIndex = section.id.search(NUMBER_SEARCH_REGEX);
     return parseInt(section.id.substring(numAtEndIndex), 10);
   }
-  
+
   /**
    * Returns all sections as an array of elements.
    * @returns {*[]}
@@ -41,7 +41,7 @@
   function getAllSectionsAsArray() {
     return [...document.getElementsByTagName('section')];
   }
-  
+
   /**
    * Handles the action when an anchor is clicked.
    * Scrolls to anchor id smoothly and toggles class 'active' on the
@@ -56,14 +56,14 @@
       targetSection.scrollIntoView({
         behavior: 'smooth',
       });
-      
+
       // toggle class 'active'
       const currActiveSection = document.getElementsByClassName('active').item(0);
       currActiveSection.classList.remove('active');
       targetSection.classList.add('active');
     }
   }
-  
+
   /**
    * Builds the navigation efficiently menu by using a document fragment.
    * It also adds a single event listener to the ul element to handle clicks on
@@ -81,16 +81,16 @@
       listAnchor.setAttribute('href', `#${section.id}`);
       listAnchor.classList.add('menu__link');
       listAnchor.textContent = section.querySelector('div.landing__container h2').textContent;
-      
+
       listItem.appendChild(listAnchor);
       navListDocFragment.appendChild(listItem);
     });
     navList.appendChild(navListDocFragment);
-    
+
     // add event listeners using the bubbling phase
     navList.addEventListener('click', handleAnchorClick);
   }
-  
+
   /**
    * Creates a given number of sections. It clones the last existing one and adds n
    * more sections to the page in order.
@@ -101,7 +101,7 @@
     const sections = getAllSectionsAsArray();
     const lastSection = sections[sections.length - 1];
     const lastNum = extractIdNum(lastSection);
-    
+
     // clone 4 sections from lastSection
     const sectionsDocFragment = document.createDocumentFragment();
     for (let i = lastNum + 1; i <= lastNum + numberOfNewSections; i += 1) {
@@ -114,21 +114,21 @@
     }
     document.querySelector('main').appendChild(sectionsDocFragment);
   }
-  
-  
+
+
   /*
    * Menu Building
    */
-  
+
   // build menu
   createNSections();
   buildNavMenu();
-  
-  
+
+
   /*
    * Scroll to Top Button Functionality
    */
-  
+
   // make button appear or disappear by using the window's scroll event
   window.onscroll = () => {
     if (window.pageYOffset > SCROLL_TO_TOP_PAGE_Y_OFFSET) {
@@ -137,7 +137,7 @@
       document.getElementById('page__scroll-to-top').style.display = 'none';
     }
   };
-  
+
   // add event listener to button to scroll to top smoothly after a click
   document.getElementById('page__scroll-to-top').addEventListener('click', () => {
     window.scrollTo({
@@ -148,4 +148,3 @@
     document.getElementById('page__scroll-to-top').style.display = 'none';
   });
 }());
-
