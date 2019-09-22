@@ -13,10 +13,12 @@
  *
  */
 
-/**
- * Define Global Variables
- *
+/*
+ * Global Variables
  */
+const NUMBER_SEARCH_REGEX = /\d+/;
+const DEFAULT_NUMBER_OF_SECTIONS_TO_CREATE = 4;
+const SCROLL_TO_TOP_PAGE_Y_OFFSET = 50;
 
 
 /**
