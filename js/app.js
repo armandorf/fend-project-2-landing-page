@@ -45,10 +45,26 @@ function getAllSectionsAsArray() {
 }
 
 /**
- * End Helper Functions
- * Begin Main Functions
- *
+ * Handles the action when an anchor is clicked.
+ * Scrolls to anchor id smoothly and toggles class 'active' on the
+ * target element.
+ * @param e
  */
+function handleAnchorClick(e) {
+  e.preventDefault();
+  if (e.target.nodeName.toLowerCase() === 'a') {
+    // set smooth scrolling
+    const targetSection = document.querySelector(e.target.getAttribute('href'));
+    targetSection.scrollIntoView({
+      behavior: 'smooth',
+    });
+
+    // toggle class 'active'
+    const currActiveSection = document.getElementsByClassName('active').item(0);
+    currActiveSection.classList.remove('active');
+    targetSection.classList.add('active');
+  }
+}
 
 // build the nav
 
