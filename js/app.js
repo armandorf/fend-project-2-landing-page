@@ -118,14 +118,15 @@ function createNSections(numberOfNewSections = DEFAULT_NUMBER_OF_SECTIONS_TO_CRE
 }
 
 
+/*
+ * Menu Building
+ */
 
-// Scroll to anchor ID using scrollTO event
+// build menu
+createNSections();
+buildNavMenu();
 
 
-/**
- * End Main Functions
- * Begin Events
- *
  */
 
 // Build menu
