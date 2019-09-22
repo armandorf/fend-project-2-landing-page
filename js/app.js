@@ -93,8 +93,30 @@ function buildNavMenu() {
   navList.addEventListener('click', handleAnchorClick);
 }
 
+/**
+ * Creates a given number of sections. It clones the last existing one and adds n
+ * more sections to the page in order.
+ * @param numberOfNewSections
+ */
+function createNSections(numberOfNewSections = DEFAULT_NUMBER_OF_SECTIONS_TO_CREATE) {
+  // create 4 new sections
+  const sections = getAllSectionsAsArray();
+  const lastSection = sections[sections.length - 1];
+  const lastNum = extractIdNum(lastSection);
 
-// Add class 'active' to section when near top of viewport
+  // clone 4 sections from lastSection
+  const sectionsDocFragment = document.createDocumentFragment();
+  for (let i = lastNum + 1; i <= lastNum + numberOfNewSections; i += 1) {
+    const clonedNode = lastSection.cloneNode(true);
+    // update id value
+    clonedNode.id = `section${i}`;
+    // update h2 text content
+    clonedNode.querySelector('div.landing__container h2').textContent = `Section ${i}`;
+    sectionsDocFragment.appendChild(clonedNode);
+  }
+  document.querySelector('main').appendChild(sectionsDocFragment);
+}
+
 
 
 // Scroll to anchor ID using scrollTO event
