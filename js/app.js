@@ -21,12 +21,28 @@ const DEFAULT_NUMBER_OF_SECTIONS_TO_CREATE = 4;
 const SCROLL_TO_TOP_PAGE_Y_OFFSET = 50;
 
 
-/**
- * End Global Variables
- * Start Helper Functions
- *
+/*
+ * Helper Functions
  */
 
+/**
+ * Extracts the number that indicates section order from its id value
+ * when such number is at the end of the string.
+ * @param section HTMLElement object
+ * @returns {number}
+ */
+function extractIdNum(section) {
+  const numAtEndIndex = section.id.search(NUMBER_SEARCH_REGEX);
+  return parseInt(section.id.substring(numAtEndIndex), 10);
+}
+
+/**
+ * Returns all sections as an array of elements.
+ * @returns {*[]}
+ */
+function getAllSectionsAsArray() {
+  return [...document.getElementsByTagName('section')];
+}
 
 /**
  * End Helper Functions
