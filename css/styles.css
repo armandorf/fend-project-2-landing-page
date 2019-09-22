@@ -210,14 +210,14 @@ section.active .landing__container::after {
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
-	from {
-		transform: rotate(0deg)
-		           translate(-1em)
-		           rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg)
-		           translate(-1em)
-		           rotate(-360deg);
-	}
+    from {
+        transform: rotate(0deg)
+                   translate(-1em)
+                   rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg)
+                   translate(-1em)
+                   rotate(-360deg);
+    }
 }
