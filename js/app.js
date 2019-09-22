@@ -66,7 +66,32 @@ function handleAnchorClick(e) {
   }
 }
 
-// build the nav
+/**
+ * Builds the navigation efficiently menu by using a document fragment.
+ * It also adds a single event listener to the ul element to handle clicks on
+ * the anchors.
+ */
+function buildNavMenu() {
+  // create a list menu item for each section
+  const navList = document.getElementById('navbar__list');
+  const navListDocFragment = document.createDocumentFragment();
+  const sections = getAllSectionsAsArray();
+  sections.forEach((section) => {
+    // create elements
+    const listItem = document.createElement('li');
+    const listAnchor = document.createElement('a');
+    listAnchor.setAttribute('href', `#${section.id}`);
+    listAnchor.classList.add('menu__link');
+    listAnchor.textContent = section.querySelector('div.landing__container h2').textContent;
+
+    listItem.appendChild(listAnchor);
+    navListDocFragment.appendChild(listItem);
+  });
+  navList.appendChild(navListDocFragment);
+
+  // add event listeners using the bubbling phase
+  navList.addEventListener('click', handleAnchorClick);
+}
 
 
 // Add class 'active' to section when near top of viewport
