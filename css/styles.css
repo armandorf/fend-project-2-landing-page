@@ -208,6 +208,23 @@ section.active .landing__container::after {
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
 
+#page__scroll-to-top {
+    display: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: fixed;
+    margin: 0;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+    border: solid 3px white;
+}
+
+#page__scroll-to-top:hover {
+    background-color: gainsboro;
+    color: black;
+}
+
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
     from {
